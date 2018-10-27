@@ -14,7 +14,7 @@ fs.readFile("mainArr.txt", "utf8", function (error, data) {
         return console.log(error);
     }
     if (data) {
-        console.log(data);
+        console.log(JSON.parse(data));
     } else {
         console.log("no hay data");
     }
@@ -25,7 +25,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", function (req, res) {
-    res.send("Ya sirve");
+    res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/tables", function (req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"));
+});
+
+app.get("/reserve", function (req, res) {
+    res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
 app.listen(PORT, function () {
