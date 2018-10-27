@@ -9,8 +9,8 @@ const PORT = 3050;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-let mainArr = [];
-let waitArr = [];
+let mainArr = [{ name: 'ola', phone: '11', email: 'paoskd', ID: 'ssss' }];
+let waitArr = [{ name: 'ola', phone: '11', email: 'paoskd', ID: 'ssss' }];
 
 fs.readFile("mainArr.txt", "utf8", function (error, data) {
     if (error) {
