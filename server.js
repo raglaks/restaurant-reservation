@@ -41,7 +41,7 @@ app.get("/reserve", function (req, res) {
 app.post("/reserve", function (req, res) {
     var newRes = req.body;
     console.log(req.body);
-    return res.json(newRes);
+    
 });
 
 app.get("/tables/reserves", function (req, res) {
