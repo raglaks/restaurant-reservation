@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
+const Reservation = require("./reservation.js");
 
 const app = express();
 const PORT = 3000;
