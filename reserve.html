@@ -85,6 +85,7 @@
 
     $("#add-btn").on("click", function (event) {
         event.preventDefault();
+
         var newRes = {
             name: $("#name").val().trim(),
             phone: $("#phone").val().trim(),
@@ -98,6 +99,10 @@
                 alert("Adding res...");
         });
 
+        $("#name").val("");
+        $("#phone").val("");
+        $("#email").val("");
+        $("#ID").val("");
     });
 </script>
 
