@@ -17,12 +17,27 @@ fs.readFile("mainArr.txt", "utf8", function (error, data) {
         return console.log(error);
     }
     if (data) {
-        console.log(JSON.parse(data));
+        //console.log(JSON.parse(data));
+        mainArr = JSON.parse(data);
     } else {
         console.log("no hay data");
     }
     //var dataArr = data.split(",");
 });
+
+fs.readFile("waitArr.txt", "utf8", function (error, data) {
+    if (error) {
+        return console.log(error);
+    }
+    if (data) {
+        //console.log(JSON.parse(data));
+        waitArr = JSON.parse(data);
+    } else {
+        console.log("no hay data");
+    }
+    //var dataArr = data.split(",");
+});
+
 
 
 
@@ -40,8 +55,36 @@ app.get("/reserve", function (req, res) {
 
 app.post("/reserve", function (req, res) {
     var newRes = req.body;
-    console.log(req.body);
-    
+
+    console.log(newRes);
+
+    if (mainArr.length >= 5) {
+
+        waitArr.push(newRes);
+
+        fs.writeFile(__dirname + "/waitArr.txt", JSON.stringify(waitArr), function (err, data) {
+
+            if (err) throw err;
+
+            console.log("updated WAIT LIST");
+        });
+
+    } else {
+
+        mainArr.push(newRes);
+
+        fs.writeFile(__dirname + "/mainArr.txt", JSON.stringify(mainArr), function (err, data) {
+
+            if (err) throw err;
+
+            console.log("updated MAIN");
+        });
+
+    }
+
+    console.log(mainArr.length);
+    console.log(waitArr.length);
+
 });
 
 app.get("/tables/reserves", function (req, res) {
